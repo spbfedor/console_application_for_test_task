@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 
 DB_HOST = "localhost"
 DB_PORT = 5432

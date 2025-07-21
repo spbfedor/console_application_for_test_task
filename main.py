@@ -1,6 +1,8 @@
 from datetime import datetime
+
 from database import create_table, delete_table
-from models import create_a_record
+from models import automatic_filling_directory, Employee
+from models import output_of_unique_employees, sampling_time_measurement
 
 
 class App:
@@ -31,9 +33,7 @@ class App:
             elif number_menu == 1:
                 create_table()
             elif number_menu == 2:
-                lats_name = input("...Введите фамилию: ")
-                first_name = input("...Введите имя: ")
-                patronymic = input("...Введите отчество: ")
+                name = input("...Введите ФИО: ")
                 date_string = input(
                     "...Введите дату рождения в формате ГГГГ-ММ-ДД.: "
                 )
@@ -46,21 +46,19 @@ class App:
                 except ValueError:
                     print("Некорректный формат даты.")
                     date_string = input("...Введите дату рождения в формате ГГГГ-ММ-ДД.: ")
-                gender = input("...Укажите ваш пол: ")
 
-                create_a_record(
-                    lats_name,
-                    first_name,
-                    patronymic,
+                gender = input("...Укажите ваш пол: ")
+                Employee.create_a_record(
+                    name,
                     date_of_birth,
                     gender
                 )
             elif number_menu == 3:
-                pass
+                output_of_unique_employees()
             elif number_menu == 4:
-                pass
+                automatic_filling_directory()
             elif number_menu == 5:
-                pass
+                sampling_time_measurement()
         except ValueError:
             print(
                 "Ошибка! Введите число от 1 до 5 включительно."
