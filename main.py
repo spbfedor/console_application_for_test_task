@@ -2,7 +2,8 @@ from datetime import datetime
 
 from database import create_table, delete_table
 from models import automatic_filling_directory, Employee
-from models import output_of_unique_employees, sampling_time_measurement
+from models import output_of_unique_employees, query_optimization
+from models import sampling_time_measurement
 
 
 class App:
@@ -20,6 +21,7 @@ class App:
             "3 - Посмотреть всех сотрудников в справочнике\n"
             "4 - Заполнение справочника сотрудников из списка\n"
             "5 - Получить отфильтрованные данные из таблицы\n"
+            "6 - Проверить время запроса после оптимизации\n"
             "0 - Выход из приложения"
         )
         number_menu = input("...Введите число: ")
@@ -59,9 +61,11 @@ class App:
                 automatic_filling_directory()
             elif number_menu == 5:
                 sampling_time_measurement()
+            elif number_menu == 6:
+                query_optimization()
         except ValueError:
             print(
-                "Ошибка! Введите число от 1 до 5 включительно."
+                "Ошибка! Введите число от 1 до 6 включительно."
                 "Или 0 для выхода"
             )
 
